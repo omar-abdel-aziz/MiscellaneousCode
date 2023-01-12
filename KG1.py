@@ -24,6 +24,10 @@ class db_connect:
         finally:
             session.close()
         return response
+
+# The URI, Username and Password are in a .env file. all such information and dependancies removed for safety of information 
+db = db_connect(URI, USER, PWD) 
+
 # This model represents the parameters for an edge in a Neo4j graph.
 class EdgeParams(BaseModel):
     # The subject of the edge.
@@ -58,8 +62,7 @@ class QueryMessage(BaseModel):
 class Query(BaseModel):
     # The message containing the query for the Neo4j graph.
     message: QueryMessage
-###
-###
+
 def parse_query(query:Query):
     # Initialize result dictionary
     result = {}
